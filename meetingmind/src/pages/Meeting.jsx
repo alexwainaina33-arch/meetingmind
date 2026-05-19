@@ -90,7 +90,7 @@ function Meeting({ navigate, user }) {
       }
 
       recognition.onend = () => {
-        if (isListening) recognition.start()
+        recognition.start()
       }
 
       recognition.start()
