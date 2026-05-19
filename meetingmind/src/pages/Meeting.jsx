@@ -138,11 +138,14 @@ function Meeting({ navigate, user }) {
     }
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer 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'
+        },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'llama-3.3-70b-versatile',
           max_tokens: 1000,
           messages: [{
             role: 'user',
@@ -167,7 +170,7 @@ Return only valid JSON, no markdown, no explanation.`
       })
 
       const data = await response.json()
-      const text = data.content?.[0]?.text || '{}'
+      const text = data.choices?.[0]?.message?.content || '{}'
       const clean = text.replace(/```json|```/g, '').trim()
       const parsed = JSON.parse(clean)
 
