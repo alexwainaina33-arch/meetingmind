@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 
 const GROQ_CHAT_URL = 'https://api.groq.com/openai/v1/chat/completions'
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || "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"
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY
 
 export function useSummarizer() {
   const [isSummarizing, setIsSummarizing] = useState(false)
